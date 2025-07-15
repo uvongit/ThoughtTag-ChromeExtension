@@ -7,23 +7,36 @@
 ## ✨ Features
 
 ✅ Add sticky notes anywhere on a webpage
+
 ✅ Minimize, Pin, Move, Resize notes
+
 ✅ Customize font color, bold, italic, underline — even partial text formatting
+
 ✅ Choose from a beautiful color palette or custom colors
+
 ✅ Export notes to `.txt`
+
 ✅ Dark mode toggle 🌙 / ☀️
+
 ✅ Notes saved per URL or per Site (configurable)
+
 ✅ Elegant popup for viewing & searching notes
+
 ✅ Smooth, production-grade UI
 
 
 ## 🛠 Installation
 
 1️⃣ Clone or download this repository.
+
 2️⃣ Go to `chrome://extensions/` in your browser.
+
 3️⃣ Enable **Developer mode** (top right).
+
 4️⃣ Click **Load unpacked** and select the folder.
+
 5️⃣ Done — click the extension icon and start taking notes!
+
 
 ---
 
