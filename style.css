@@ -1,0 +1,183 @@
+/* Toolbar */
+.pro-toolbar {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  display: flex;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.pro-toolbar button {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+.pro-toolbar button:hover {
+  background: #ddd;
+  color: #222;
+}
+
+.pro-toolbar .add-note-btn {
+  background: #28a745;
+  color: #fff;
+}
+
+.pro-toolbar .add-note-btn:hover {
+  background: #218838;
+}
+
+/* Notes */
+.pro-note {
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 8px;
+  min-width: 200px;
+  min-height: 150px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #333;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  position: absolute;
+  resize: both;
+  overflow: auto;
+  cursor: grab;
+}
+
+.pro-note:active {
+  cursor: grabbing;
+}
+
+.pro-note:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Note Header */
+.note-title {
+  width: calc(100% - 40px);
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* Note Content */
+.note-content {
+  width: 100%;
+  height: calc(100% - 50px);
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: text !important;
+  overflow-y: auto;
+}
+.note-content:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3); /* optional */
+}
+/* Note Toolbar */
+.note-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.note-toolbar button,
+.pro-note button.close-btn,
+.pro-note button.minimize-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.note-toolbar button:hover {
+  color: #000;
+}
+
+.pro-note button.close-btn,
+.pro-note button.minimize-btn {
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+.pro-note button.close-btn:hover,
+.pro-note button.minimize-btn:hover {
+  color: #f00;
+}
+
+/* Dark Mode */
+.pro-toolbar.dark-mode {
+  background: rgba(34, 34, 34, 0.9);
+}
+
+.pro-toolbar.dark-mode button {
+  background: #444;
+  color: #eee;
+}
+
+.pro-note.dark-mode {
+  background: #1e1e1e;
+  color: #eee;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.pro-note.dark-mode .note-title {
+  color: #eee;
+}
+
+.pro-note.dark-mode .note-content {
+  color: #ddd;
+}
+
+/* Color Palette */
+.color-palette {
+  display: flex;
+  gap: 4px;
+}
+
+.color-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: transform 0.1s ease;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+}
+.pro-note.minimized {
+  height: 40px !important;
+  width: 200px !important;
+  resize: none !important;
+  overflow: hidden !important;
+  padding: 4px !important;
+  box-sizing: border-box;
+}
+
+.pro-note.minimized .note-toolbar,
+.pro-note.minimized .note-content {
+  display: none !important;
+}

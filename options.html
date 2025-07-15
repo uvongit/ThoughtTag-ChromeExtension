@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ThoughtTag Settings</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+  color: #333;
+}
+h1 {
+  text-align: center;
+  color: #4A90E2;
+}
+label {
+  display: block;
+  margin: 15px 0 5px;
+}
+select, input[type="checkbox"], button {
+  padding: 8px;
+  margin-top: 5px;
+}
+button {
+  background: #4A90E2;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+button:hover {
+  background: #357ABD;
+}
+</style>
+</head>
+<body>
+<h1>ThoughtTag Settings</h1>
+
+<label for="scope">Notes Scope:</label>
+<select id="scope">
+  <option value="perURL">Per Page URL</option>
+  <option value="perSite">Per Site (hostname)</option>
+</select>
+
+<label>
+  <input type="checkbox" id="darkMode">
+  Enable Dark Mode by default
+</label>
+
+<button id="clearNotes">Clear All Notes</button>
+
+<script src="options.js"></script>
+</body>
+</html>

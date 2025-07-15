@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ThoughtTags - My Notes</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+  width: 300px;
+  background: #fff;
+  color: #333;
+}
+h2 {
+  margin-top: 0;
+  color: #4A90E2;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.note-item {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+.note-item button {
+  float: right;
+  background: red;
+  color: #fff;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<h2>My Notes</h2>
+<input type="text" id="search" placeholder="Search notes...">
+<div id="notes-list"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>
