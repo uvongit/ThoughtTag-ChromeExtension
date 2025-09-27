@@ -105,13 +105,7 @@ ThoughtTag-ChromeExtension/
 ├── options.js
 ├── style.css
 ├── icons/
-└── DEVELOPER_GUIDE.md
 ```
-
----
-
-## 📚 Developer Handbook
-Craving a deeper dive into workflows, messaging, and data flow diagrams? Explore [`DEVELOPER_GUIDE.md`](./DEVELOPER_GUIDE.md) for the full technical narrative.
 
 ---
 
