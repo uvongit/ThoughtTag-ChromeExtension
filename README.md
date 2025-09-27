@@ -1,98 +1,141 @@
+# ✨ ThoughtTag — Delightfully Rich Notes in Any Tab
 
-## 🚀 ThoughtTag – Elegant Notes Anywhere
-
-> Take beautiful, editable, and stylish notes directly on any webpage. With dark mode, color themes, formatting, and a polished UI — Power Notes turns your browser into a powerful productivity tool.
-
-
-## ✨ Features
-
-✅ Add sticky notes anywhere on a webpage
-
-✅ Minimize, Pin, Move, Resize notes
-
-✅ Customize font color, bold, italic, underline — even partial text formatting
-
-✅ Choose from a beautiful color palette or custom colors
-
-✅ Export notes to `.txt`
-
-✅ Dark mode toggle 🌙 / ☀️
-
-✅ Notes saved per URL or per Site (configurable)
-
-✅ Elegant popup for viewing & searching notes
-
-✅ Smooth, production-grade UI
-
-
-## 🛠 Installation
-
-1️⃣ Clone or download this repository.
-
-2️⃣ Go to `chrome://extensions/` in your browser.
-
-3️⃣ Enable **Developer mode** (top right).
-
-4️⃣ Click **Load unpacked** and select the folder.
-
-5️⃣ Done — click the extension icon and start taking notes!
-
+> 💡 ThoughtTag transforms every web page into a living canvas for your ideas. Capture insights exactly where they happen, keep them synchronized across sessions, and revisit them through a beautifully crafted popup experience.
 
 ---
 
-## 📂 Project Structure
+## 🚀 Why ThoughtTag Stands Out
+- **In-place thinking** — Create, drag, resize, and pin notes while staying immersed in the page you are exploring.
+- **Consistent experience** — A single design system in `style.css` powers the injected workspace, popup dashboard, and options center.
+- **Resilient storage** — Notes prefer Chrome Sync, gracefully fall back to `chrome.storage.local`, and mirror to `localStorage` when APIs are unavailable.
+- **Tailored workflow** — Toggle dark mode, scope notes per host or per URL, export thoughts, and reopen archived gems in seconds.
 
+---
+
+## 🌟 Feature Highlights
+- **Floating toolbar** — Drag the control dock anywhere; its position persists using helpers inside `content.js`.
+- **Rich editor** — Bold, italicize, underline, recolor selections, or pick from curated palettes inside each note card.
+- **Stateful notes** — Pin for priority, minimize for focus, close to archive, or export as `.txt` for hand-offs.
+- **Popup dashboard** — `popup.html` + `popup.js` deliver search, filters, reopen actions, and a polished list view.
+- **Options workspace** — `options.html` + `options.js` allow tweaking default dark mode, storage scope, and clearing data.
+
+---
+
+## 🧠 Architecture at a Glance
+```mermaid
+flowchart LR
+  subgraph Browser Runtime
+    Content[content.js\nInjected Notes Workspace]
+    Popup[popup.js\nBrowser Action Popup]
+    Options[options.js\nSettings Center]
+  end
+
+  Content -- safeStorage.set/get --> Storage[(Chrome Sync / Local Storage)]
+  Popup -- safeStorage.set/get --> Storage
+  Options -- chrome.storage.* --> Storage
+  Popup -- tabs.sendMessage --> Content
+  Content -- storage.onChanged --> Popup
 ```
-power-notes-extension/
-├── manifest.json            # Chrome extension manifest (v3)
-├── content.js               # Main content script
-├── style.css                # Styles for toolbar & notes
-├── popup.html               # Popup for viewing & searching notes
-├── popup.js                 # Popup functionality
-├── options.html             # Settings page
-├── options.js               # Settings functionality
-├── icons/                   # Extension icons
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
+
+---
+
+## 🗂 Module Tour
+### `content.js`
+- **Toolbar orchestration** — Builds the draggable toolbar, persists placement, and propagates `.dark-mode` styling to each `pro-note`.
+- **Note lifecycle** — Generates note DOM, wires formatting controls, and debounces saves through `saveNotes()`.
+- **Storage resilience** — `safeStorage` mediates between Chrome Sync, local storage, and `localStorage` caching.
+- **Real-time reconciliation** — Responds to `chrome.storage.onChanged` and `thoughttags:reopen-note` runtime messages.
+
+### `popup.js`
+- **Scope-aware loader** — Computes the active storage key (per host or per URL) based on the current tab context.
+- **Curated list UI** — Sorts pinned notes, counts archived entries, renders empty states, and supports instant search.
+- **Action hub** — Delete, reopen, or queue reopen requests when the content script is not yet ready.
+
+### `options.js`
+- **Settings persistence** — Chooses the best available storage area, reads user preferences, and saves scope/dark-mode defaults.
+- **Maintenance utilities** — Ships a one-click "Clear all notes" button with confirmation safeguards.
+
+### `style.css`
+- **Design system** — Centralizes gradients, typography, shadows, and responsive rules for every surface.
+- **Dark mode variants** — Tailors colors for low-light environments across toolbar, notes, popup, and options UI.
+
+---
+
+## 💾 Data & Persistence Strategy
+- **Primary target** — `chrome.storage.sync` delivers cross-device continuity.
+- **Secondary fallback** — `chrome.storage.local` maintains resilience when sync is unavailable.
+- **Offline safety net** — `localStorage` mirrors data while `memoryStore` caches reads during the session.
+- **Scoped keys** — Notes are stored per host or per full URL, depending on the selected scope in the options page.
+
+---
+
+## ⚡ Quick Start
+1. Enable **Developer mode** at `chrome://extensions/`.
+2. Click **Load unpacked** and select this project directory.
+3. Pin ThoughtTag from your extension tray.
+4. Open any page, tap the toolbar ➕ button, and start capturing insights.
+
+---
+
+## 🧭 Everyday Workflow
+1. **Launch the toolbar** — The floating dock appears automatically; park it where it inspires you most.
+2. **Capture a note** — Hit ➕ to spawn a rich text note with title, content, and formatting controls.
+3. **Style & organize** — Adjust fonts, apply colors, pin priority notes, minimize distractions, or close to archive.
+4. **Sync & revisit** — Edits auto-save; use the popup (`popup.js`) to search, filter, delete, or reopen archived notes.
+5. **Tune defaults** — Visit the options page to swap between per-site/per-URL scopes or to toggle default dark mode.
+
+---
+
+## 🛠 Customization Tips
+- **Dark mode on demand** — Use the toolbar toggle; the preference is persisted for consistent ambience.
+- **Color palette tweaks** — Extend the `colors` array within `content.js` to align with your brand or mood.
+- **Note defaults** — Adjust starting position, dimensions, or title templates inside `createNoteElement()`.
+- **Storage experiments** — Enhance `safeStorage` if you plan to integrate analytics or alternate persistence layers.
+
+---
+
+## 📁 Project Structure
+```text
+ThoughtTag-ChromeExtension/
+├── manifest.json
+├── content.js
+├── popup.html
+├── popup.js
+├── options.html
+├── options.js
+├── style.css
+├── icons/
+└── DEVELOPER_GUIDE.md
 ```
 
-## ⚙️ Settings
+---
 
-> Accessible from the **Options page**.
+## 📚 Developer Handbook
+Craving a deeper dive into workflows, messaging, and data flow diagrams? Explore [`DEVELOPER_GUIDE.md`](./DEVELOPER_GUIDE.md) for the full technical narrative.
 
-* Scope: Save notes *per URL* or *per Site*
-* Enable/Disable default dark mode
-* Clear all saved notes
+---
 
-## 📝 Notes Usage
+## 🔮 Roadmap Ideas
+- **Tagging system** — Group notes by topic or project inside the popup dashboard.
+- **Templated notes** — Offer quick-start templates for meeting notes, research highlights, or daily standups.
+- **Cloud sync integrations** — Experiment with optional exports to Google Drive or Notion.
+- **Collaboration hooks** — Investigate sharing note snapshots with teammates or across devices.
 
-* 📝 Click the **green + button** to create a note.
-* 🔷 Drag & resize the note anywhere on the page.
-* 🔷 Click 📌 to pin the note above others.
-* 🔷 Click ➖ to minimize (collapses to a tiny box).
-* 🔷 Customize text, color, and style.
-* 📄 Export content as `.txt` file.
+---
 
+## 🤝 Contributing
+- **Open issues** — Share bugs, ideas, or enhancement requests.
+- **Submit pull requests** — Add features or fixes that align with the architecture outlined above.
+- **Follow style cues** — Reference `style.css`, `content.js`, and the developer guide to keep contributions consistent.
 
-## 🎨 Tech Stack
+---
 
-* 💻 Vanilla JavaScript (ES6+)
-* 🖌️ HTML5 & CSS3
-* 🌙 Chrome Extensions API (Manifest v3)
+## 📄 License
+ThoughtTag is released under the MIT License. Include or reference a [`LICENSE`](./LICENSE) file to suit your distribution preferences.
 
-
-## 📜 License
-
-MIT License — feel free to use, modify, and share.
+---
 
 ## 🙌 Credits
-
-Crafted with ❤️ by [UtkarshV]
-
-Icons by [Heroicons](https://heroicons.com/)
-
-### 📬 Feedback & Contributions Welcome!
-
-If you find a bug, have an idea, or want to contribute, feel free to open an issue or PR on [GitHub](https://github.com/uvongit).
-
+- **Design & Engineering** — [UtkarshV](https://github.com/uvongit)
+- **Icons** — [Heroicons](https://heroicons.com/)
+- **Community** — Inspired by the productivity enthusiasts who love annotating the web.
