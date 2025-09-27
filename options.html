@@ -1,56 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ThoughtTag Settings</title>
-<link rel="stylesheet" href="style.css">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f9f9f9;
-  color: #333;
-}
-h1 {
-  text-align: center;
-  color: #4A90E2;
-}
-label {
-  display: block;
-  margin: 15px 0 5px;
-}
-select, input[type="checkbox"], button {
-  padding: 8px;
-  margin-top: 5px;
-}
-button {
-  background: #4A90E2;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-button:hover {
-  background: #357ABD;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>ThoughtTag Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<h1>ThoughtTag Settings</h1>
+<body class="options-body">
+  <div class="options-shell">
+    <div class="options-shell__glow"></div>
+    <header class="options-hero" role="banner">
+      <div class="options-hero__badge">ThoughtTag</div>
+      <h1 class="options-hero__title">Tailor Your Workspace</h1>
+      <p class="options-hero__subtitle">Curate a writing environment that feels deliberate, intentional, and unmistakably yours.</p>
+    </header>
 
-<label for="scope">Notes Scope:</label>
-<select id="scope">
-  <option value="perURL">Per Page URL</option>
-  <option value="perSite">Per Site (hostname)</option>
-</select>
+    <main class="options-content" role="main">
+      <section class="options-panel" aria-labelledby="panel-preferences">
+        <div class="options-panel__header">
+          <h2 id="panel-preferences" class="options-panel__title">Workspace Preferences</h2>
+          <p class="options-panel__subtitle">Define how ThoughtTag behaves across every page you capture.</p>
+        </div>
 
-<label>
-  <input type="checkbox" id="darkMode">
-  Enable Dark Mode by default
-</label>
+        <div class="options-field">
+          <div class="options-field__meta">
+            <label for="scope" class="options-label">Notes Scope</label>
+            <span class="options-hint">Choose whether your notes stay on a single page or travel with the entire site.</span>
+          </div>
+          <div class="options-control">
+            <div class="options-select">
+              <select id="scope" aria-describedby="scope-hint">
+                <option value="perURL">Per Page URL</option>
+                <option value="perSite">Per Site (hostname)</option>
+              </select>
+              <span class="options-select__chevron" aria-hidden="true"></span>
+            </div>
+            <span id="scope-hint" class="visually-hidden">Notes scope selection helper text</span>
+          </div>
+        </div>
 
-<button id="clearNotes">Clear All Notes</button>
+        <div class="options-field">
+          <div class="options-field__meta">
+            <span class="options-label">Experience</span>
+            <span class="options-hint">Set the default ambience you land in when ThoughtTag opens.</span>
+          </div>
+          <div class="options-control">
+            <label class="options-switch" for="darkMode">
+              <input type="checkbox" id="darkMode">
+              <span class="options-switch__track" aria-hidden="true"></span>
+              <span class="options-switch__label">
+                <strong>Default to Dark Mode</strong>
+                <small>Arrive in a moody, high-contrast canvas built for focus.</small>
+              </span>
+            </label>
+          </div>
+        </div>
 
-<script src="options.js"></script>
+        <div class="options-divider" role="separator"></div>
+
+        <div class="options-actions" role="group" aria-label="Maintenance">
+          <div class="options-actions__copy">
+            <h3 class="options-actions__title">Maintenance</h3>
+            <p class="options-actions__subtitle">Need a clean slate? Wipe every saved note from sync storage in a single click.</p>
+          </div>
+          <button id="clearNotes" class="options-button options-button--danger" type="button">
+            <span class="options-button__label">Clear all notes</span>
+            <span class="options-button__hint">This action cannot be undone</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="options-footer" role="contentinfo">
+      <p class="options-footer__copy">Crafted for thinkers who care about their tools. <span>Stay intentional.</span></p>
+      <a class="options-footer__link" href="https://github.com/uvongit/ThoughtTag-ChromeExtension" target="_blank" rel="noreferrer noopener">View release notes ↗</a>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
 </body>
 </html>

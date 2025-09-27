@@ -2,49 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ThoughtTags - My Notes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ThoughtTags · My Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<style>
-body {
-  font-family: Arial, sans-serif;
-  margin: 10px;
-  width: 300px;
-  background: #fff;
-  color: #333;
-}
-h2 {
-  margin-top: 0;
-  color: #4A90E2;
-}
-input[type="text"] {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-}
-.note-item {
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin-bottom: 5px;
-  font-size: 12px;
-  background: #f9f9f9;
-  border-radius: 4px;
-}
-.note-item button {
-  float: right;
-  background: red;
-  color: #fff;
-  border: none;
-  font-size: 10px;
-  cursor: pointer;
-}
-</style>
 </head>
-<body>
-<h2>My Notes</h2>
-<input type="text" id="search" placeholder="Search notes...">
-<div id="notes-list"></div>
+<body class="popup-body">
+  <!-- Decorative backdrop behind the popup content -->
+  <div class="popup-aurora" aria-hidden="true"></div>
+  <!-- Brand header containing logo, name, and note counter -->
+  <header class="popup-header">
+    <div class="popup-branding">
+      <span class="popup-logo" aria-hidden="true">
+        <img src="icons/icon48.png" alt="ThoughtTags icon" class="popup-logo__image">
+      </span>
+      <div class="popup-copy">
+        <h1 class="popup-title">ThoughtTags</h1>
+        <p class="popup-subtitle">Your ideas, beautifully organized.</p>
+      </div>
+    </div>
+    <div class="popup-header__meta">
+      <span class="popup-header__motto">Clarity for every capture</span>
+      <div id="note-count" class="note-count" aria-live="polite"></div>
+    </div>
+  </header>
 
-<script src="popup.js"></script>
+  <!-- Search form used to filter the rendered notes -->
+  <div class="popup-search">
+    <span class="popup-search__icon" aria-hidden="true">🔍</span>
+    <input type="text" id="search" class="popup-search__input" placeholder="Search notes..." aria-label="Search notes">
+  </div>
+
+  <!-- Dynamic list that the popup script keeps in sync with saved notes -->
+  <section id="notes-list" class="notes-list" role="list" aria-live="polite"></section>
+
+  <script src="popup.js"></script>
 </body>
 </html>
