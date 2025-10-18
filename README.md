@@ -21,6 +21,34 @@
 
 ---
 
+## 🖼️ Screenshots
+ThoughtTag pairs a calm, tactile aesthetic with practical density. Screens showcase soft shadows, rounded corners, and consistent typography across injected notes, popup, and options.
+
+<p align="center">
+  <img src="./ScreenShots/Screenshot%202025-09-28%20020957.png" alt="ThoughtTag in action across a web page" width="95%" />
+  <br/>
+  <sub>High‑level view: inject notes directly on any page without breaking your reading flow.</sub>
+  <br/><br/>
+</p>
+
+<p align="center">
+  <img src="./ScreenShots/Screenshot%202025-10-18%20221141.png" alt="In‑page toolbar and rich note cards" width="48%" />
+  <img src="./ScreenShots/Screenshot%202025-10-18%20221409.png" alt="Popup dashboard with search, filters, and reopen" width="48%" />
+</p>
+<p align="center"><sub>In‑page toolbar & notes • Popup dashboard</sub></p>
+
+<p align="center">
+  <img src="./ScreenShots/Screenshot%202025-10-18%20221332.png" alt="Formatting controls and color palettes inside note editor" width="48%" />
+  <img src="./ScreenShots/Screenshot%202025-10-18%20221536.png" alt="Options page to set defaults, scope, and maintenance actions" width="48%" />
+</p>
+<p align="center"><sub>Rich formatting • Options workspace</sub></p>
+
+<p align="center">
+  <sub>Tip: Click any image to view it at full resolution.</sub>
+</p>
+
+---
+
 ## 🧠 Architecture at a Glance
 ```mermaid
 flowchart LR
